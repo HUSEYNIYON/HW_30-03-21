@@ -14,7 +14,7 @@ namespace HW_1_30_03_21.Models
         public int Id { get; set; }
         public int CategoryId { get; set; }
 
-        [MaxLength]
+        [MaxLength(100)]
         [Required(ErrorMessage = "Field is required")]
         public string ProductName { get; set; }
 
