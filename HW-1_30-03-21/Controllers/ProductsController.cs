@@ -18,9 +18,12 @@ namespace HW_1_30_03_21.Controllers
             _context = context;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string category)
         {
-            return View(await _context.Products.Include(p => p.Categories).ToListAsync());
+            if (category == null)
+                return View(await _context.Products.ToListAsync());
+            else
+                return View(await _context.Products.Where(p => p.Categories.CategoryName.Equals(category)).ToListAsync());
         }
 
         public async Task<IActionResult> Details(int? id)
